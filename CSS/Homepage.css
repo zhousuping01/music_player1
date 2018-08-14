@@ -41,12 +41,12 @@ body html{
 }
 .kuang1 input{
     width: 38vw;
-    height: 1.8vh;
-    font-size: 150%;
+    height: 2vh;
+    line-height: 2vh;
+    font-size: 4vw;
     background-color: transparent;
     border-color: transparent;
     margin-left: 0.5vw;
-    margin-top:-1vh ;
 }
 .center img:nth-child(1){
     width: 93.6vw;
