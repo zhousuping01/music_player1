@@ -1,5 +1,5 @@
 /**
- * Created by ÷‹Àÿ∆Ω on 2018/8/12.
+ * Created by √ñ√ú√ã√ò√Ü¬Ω on 2018/8/12.
  */
 window.onload = function(){
     var txt1 = document.getElementById('txt1');
@@ -20,7 +20,7 @@ window.onload = function(){
     var mobileHeight = window.innerHeight;
     document.body.style.width = mobileWidth;
     document.body.style.height = mobileHeight;
-    choose1.style.width = 30.2 + 'vw';
+    choose1.style.width = 31.2 + 'vw';
 
     //alert(zhi1.innerHTML);
     function add(t){
@@ -33,13 +33,13 @@ window.onload = function(){
         //alert(zhi1.innerHTML );
     }
     about.onclick = function(){
-        choose1.style.width = 30.2 + 'vw';
+        choose1.style.width = 31.2 + 'vw';
         choose2.style.width = 0 + 'vw';
         choose3.style.width = 0 + 'vw';
         img1.style.opacity = 0.7;
     }
     focus.onclick = function(){
-        choose2.style.width = 30.2 + 'vw';
+        choose2.style.width = 31.2 + 'vw';
         choose1.style.width = 0 + 'vw';
         choose3.style.width = 0 + 'vw';
         img1.style.opacity = 0;
@@ -47,7 +47,7 @@ window.onload = function(){
     fans.onclick = function(){
         choose2.style.width = 0 + 'vw';
         choose1.style.width = 0 + 'vw';
-        choose3.style.width = 30.2 + 'vw';
+        choose3.style.width = 31.2 + 'vw';
         img1.style.opacity = 0;
     }
 
