@@ -1,5 +1,5 @@
 /**
- * Created by ÖÜËØÆ½ on 2018/8/13.
+ * Created by å‘¨ç´ å¹³ on 2018/8/13.
  */
 var volume = document.getElementById('volume');
 var audio = document.getElementById('audio');
@@ -18,6 +18,8 @@ var timeWidth = document.getElementById('timeWidth');
 var endTime = document.getElementById('endTime');
 var totalTime = document.getElementById('totalTime');
 var xunhuan = document.getElementById('xunhuan');
+var shoucang = document.getElementById('shoucang');
+var marquee = document.getElementById('marquee');
 
 
 window.onload = function(){
@@ -29,6 +31,32 @@ window.onload = function(){
 
 };
 
+var isXun = true;
+xunhuan.onclick = function(){
+    if(isXun){
+        xunhuan.src = "../IMAG/music/danquxunhuan.png";
+        if(audio.currentTime == audio.duration){
+            audio.currentTime = 0;
+            audio.play();
+        }
+        isXun = false;
+    }else{
+        xunhuan.src = "../IMAG/music/circulate.png";
+        isXun = true;
+    }
+}
+
+var isDo = true;
+shoucang.onclick = function(){
+    if(isDo){
+        shoucang.setAttribute('src','../IMAG/music/yishoucang.png');
+        isDo = false;
+    }else{
+        shoucang.setAttribute('src','../IMAG/music/shoucang.png');
+        isDo = true;
+    }
+
+};
 kuaijin.onclick = function(){
     audio.currentTime += 5;
 };
@@ -38,7 +66,7 @@ kuaitui.onclick = function(){
 
 var isSound = true;
 laba.onclick = function(){
-    if(true){
+    if(isSound){
         audio.muted = true;
         img2.setAttribute('src','../IMAG/music/silent.png');
         isSound = false;
@@ -66,29 +94,18 @@ btn1.onclick = function(){
         isPlay = true;
     }
 };
-
-volume.onmousedown = function(e){
+audio.volume = 0.5;
+bar.style.left = (volume.clientWidth - bar.offsetWidth)/2 + "px";
+colo.style.width = (volume.clientWidth - bar.offsetWidth)/2  + "px";
+volume.onclick = function(e){
     var ev = e||window.event;
-    console.log(ev.clientX);
     var cont = ev.clientX - this.offsetLeft;
-    document.onmousemove = function(e){
-        var ev = e||window.event;
-        var changeLeft = ev.clientX - cont;
-        var maxLeft = volume.clientWidth - bar.offsetWidth;
-        if(changeLeft > maxLeft){
-            changeLeft = maxLeft;
-        }else if(changeLeft < 0){
-            changeLeft = 0;
-        }
-        bar.style.left = changeLeft + "px";
-        colo.style.width = changeLeft + "px";
-        audio.volume = bar.offsetLeft/maxLeft;
-    };
-    document.onmouseup = function(){
-        this.onmousemove = null;
-        this.onmouseup = null;
-    };
-    return false;
+    var allwidth = volume.clientWidth;
+    if(cont<=allwidth){
+        audio.volume = (cont/allwidth);
+        bar.style.left = cont + "px";
+        colo.style.width = cont + "px"
+    }
 };
 
 function sendTime(t){
@@ -101,13 +118,13 @@ function sendTime(t){
         seconds = '0' + seconds;
     }
     return minutes + ':' + seconds;
-};
+}
 var waitTime = setTimeout(function(){
     if(audio.readyState > 2){
         endTime.innerHTML = sendTime(audio.duration);
         clearInterval(waitTime);
     }
-},100)
+},100);
 
 audio.addEventListener('timeupdate',function(){
     changeTime.innerHTML = sendTime(audio.currentTime);
@@ -122,6 +139,3 @@ totalTime.onclick = function(e){
     timeWidth.style.width = ( (ev.clientX  - totalTime.offsetLeft) / totalTime.clientWidth)*100 + '%';
     audio.currentTime = audio.duration * ( (ev.clientX  - totalTime.offsetLeft) / totalTime.clientWidth);
 };
-
-
-
