@@ -42,6 +42,7 @@ body html{
 .kuang1 input{
     width: 38vw;
     height: 1.8vh;
+    font-size: 150%;
     background-color: transparent;
     border-color: transparent;
     margin-left: 0.5vw;
