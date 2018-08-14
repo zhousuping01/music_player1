@@ -136,6 +136,6 @@ audio.addEventListener('timeupdate',function(){
 totalTime.onclick = function(e){
     var ev = e||window.event;
     console.log(ev.clientX);
-    timeWidth.style.width = ( (ev.clientX  - totalTime.offsetLeft) / totalTime.clientWidth)*100 + '%';
+    timeWidth.style.width =  (ev.clientX  - totalTime.offsetLeft) + 'px';
     audio.currentTime = audio.duration * ( (ev.clientX  - totalTime.offsetLeft) / totalTime.clientWidth);
 };
